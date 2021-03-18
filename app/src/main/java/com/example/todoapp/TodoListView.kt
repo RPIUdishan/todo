@@ -1,13 +1,16 @@
 package com.example.todoapp
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.BaseAdapter
 import android.widget.ListView
+import android.widget.TextView
 
 class TodoListView : AppCompatActivity() {
 
@@ -20,11 +23,11 @@ class TodoListView : AppCompatActivity() {
         listOfTodo = findViewById(R.id.todo_listView)
 
 
-        var db = DBHandeller(this)
+//        var db = DBHandeller(this)
 
         val TAG = "Test"
 //        var emList = listOf<String>()
-        val data = db.readActivities()
+//        val data = db.readActivities()
 
         val tstList = listOf<String>("Mango", "Apple", "Banana")
 //        var x = data.get(2).
@@ -48,11 +51,50 @@ class TodoListView : AppCompatActivity() {
 
 //        Log.d(TAG, "QWERTY "+emList.toString())
 
-        val arrayAdapter: ArrayAdapter<*>
-        Log.d(TAG, ":::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::After Array Adaptor Creation")
-        arrayAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, tstList)
-        listOfTodo.adapter = arrayAdapter
+//        val arrayAdapter: ArrayAdapter<*>
+//        Log.d(TAG, ":::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::After Array Adaptor Creation")
+//        arrayAdapteryAdapter = MyAdapterpter
+        listOfTodo.adapter = MyAdapter(this)
 
+
+    }
+
+    class MyAdapter(context: Context):BaseAdapter(){
+
+        private val mContext: Context
+
+        init {
+            mContext = context
+        }
+
+        var db = DBHandeller(mContext)
+        val data = db.readActivities()
+
+        override fun getView(position: Int, convertView: View?, viewGroup: ViewGroup?): View {
+
+            var layoutInflater = LayoutInflater.from(mContext)
+            var row = layoutInflater.inflate(R.layout.row_main, viewGroup, false)
+
+
+
+            val todoName =row.findViewById<TextView>(R.id.actvity_name)
+            todoName.text = data.get(position).todo.toString()
+
+            return row
+
+        }
+
+        override fun getItem(position: Int): Any {
+            return ""
+        }
+
+        override fun getItemId(position: Int): Long {
+            return position.toLong()
+        }
+
+        override fun getCount(): Int {
+            return data.size
+        }
 
     }
 
