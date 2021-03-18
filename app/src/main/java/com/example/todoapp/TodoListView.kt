@@ -1,6 +1,8 @@
 package com.example.todoapp
 
 import android.content.Context
+import android.content.Intent
+import android.content.Intent.getIntent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -8,8 +10,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.startActivity
 
 class TodoListView : AppCompatActivity() {
+
 
     lateinit var listOfTodo:ListView
 
@@ -20,7 +25,6 @@ class TodoListView : AppCompatActivity() {
         listOfTodo = findViewById(R.id.todo_listView)
 
         listOfTodo.adapter = MyAdapter(this)
-
 
     }
 
