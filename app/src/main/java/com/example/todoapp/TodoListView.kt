@@ -7,10 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.BaseAdapter
-import android.widget.ListView
-import android.widget.TextView
+import android.widget.*
 
 class TodoListView : AppCompatActivity() {
 
@@ -21,7 +18,7 @@ class TodoListView : AppCompatActivity() {
         setContentView(R.layout.activity_todo_list_view)
 
         listOfTodo = findViewById(R.id.todo_listView)
-        
+
         listOfTodo.adapter = MyAdapter(this)
 
 
@@ -38,15 +35,20 @@ class TodoListView : AppCompatActivity() {
         var db = DBHandeller(mContext)
         val data = db.readActivities()
 
+
+
         override fun getView(position: Int, convertView: View?, viewGroup: ViewGroup?): View {
 
             var layoutInflater = LayoutInflater.from(mContext)
             var row = layoutInflater.inflate(R.layout.row_main, viewGroup, false)
 
-
-
-            val todoName =row.findViewById<TextView>(R.id.actvity_name)
+            val todoName = row.findViewById<TextView>(R.id.actvity_name)
             todoName.text = data.get(position).todo.toString()
+
+            var btnDet = row.findViewById<Button>(R.id.btnDel)
+            btnDet.setOnClickListener(){
+                db.deleteActivity(data.get(position).id)
+            }
 
             return row
 
