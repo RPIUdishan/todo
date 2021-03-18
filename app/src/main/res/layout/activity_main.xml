@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textAlignment="center"
+        android:layout_margin="20dp"
+        android:text="TO-DO "
+        android:textColor="@color/textColor"
+        android:textSize="30dp"
+        tools:layout_editor_absoluteX="174dp"
+        tools:layout_editor_absoluteY="106dp" />
+
+
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:layout_margin="20dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/custom_date"
+        android:text="Date"
+        android:textAlignment="center"
+        android:padding="10dp"
+        android:textFontWeight="700"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="enter to-do activity here"
+        android:textAlignment="center"
+        android:layout_marginTop="50dp"/>
+
+    <EditText
+        android:id="@+id/etactivity"
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/edit_fields"
+        android:hint="Activity"
+        android:padding="5dp"
+        android:layout_marginStart="50dp"
+        />
+
+    <Button
+        android:id="@+id/btn_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="50dp"
+        android:background="@drawable/button"
+        android:text="Enter Activity" />
+
+    <Button
+        android:id="@+id/btn_showAll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/button"
+        android:padding="20dp"
+        android:text="Show All Activities" />
+
+
+</LinearLayout>
