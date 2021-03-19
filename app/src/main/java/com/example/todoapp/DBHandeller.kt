@@ -72,4 +72,12 @@ class DBHandeller(var context: Context): SQLiteOpenHelper(context,DATABASE_NAME,
 //        db.delete(TABLE_NAME, null, null )
 //        db.close()
     }
+
+    fun updateActivity(id:Int, updatedActivity: String){
+        var db = this.writableDatabase
+        val updateQuery = "UPDATE $TABLE_NAME SET $COL_ACTIVITY = $updatedActivity, WHERE ID = $id"
+        db.execSQL(updateQuery)
+        db.close()
+    }
+
 }

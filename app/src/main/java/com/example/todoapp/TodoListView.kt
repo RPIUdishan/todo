@@ -73,7 +73,7 @@ class TodoListView : AppCompatActivity() {
 
                 var btnDialogUpdate = editBox.findViewById<Button>(R.id.btn_updateDialog)
                 btnDialogUpdate.setOnClickListener(){
-                    
+
                 }
             }
             return row
