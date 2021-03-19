@@ -4,6 +4,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.util.Log
 import android.widget.Toast
 
 val DATABASE_NAME = "ACTIVITY_DB"
@@ -75,7 +76,8 @@ class DBHandeller(var context: Context): SQLiteOpenHelper(context,DATABASE_NAME,
 
     fun updateActivity(id:Int, updatedActivity: String){
         var db = this.writableDatabase
-        val updateQuery = "UPDATE $TABLE_NAME SET $COL_ACTIVITY = $updatedActivity, WHERE ID = $id"
+        Log.d("Debug Tag", "Update Checking")
+        val updateQuery = "UPDATE $TABLE_NAME SET $COL_ACTIVITY = $updatedActivity, WHERE $COL_ID = $id ;"
         db.execSQL(updateQuery)
         db.close()
     }

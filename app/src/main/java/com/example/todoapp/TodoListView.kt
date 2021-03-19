@@ -49,7 +49,7 @@ class TodoListView : AppCompatActivity() {
             var row = layoutInflater.inflate(R.layout.row_main, viewGroup, false)
 
             val todoName = row.findViewById<TextView>(R.id.actvity_name)
-            todoName.text = data.get(position).todo.toString()
+            todoName.text = data.get(position).todo
 
             var btnDet = row.findViewById<Button>(R.id.btnDel)
             btnDet.setOnClickListener(){
@@ -73,7 +73,8 @@ class TodoListView : AppCompatActivity() {
 
                 var btnDialogUpdate = editBox.findViewById<Button>(R.id.btn_updateDialog)
                 btnDialogUpdate.setOnClickListener(){
-
+                    db.updateActivity(data.get(position).id, editBox.findViewById<EditText>(R.id.etActUpdate).text.toString())
+                    Toast.makeText(mContext, editBox.findViewById<EditText>(R.id.etActUpdate).text.toString(), Toast.LENGTH_LONG).show()
                 }
             }
             return row
