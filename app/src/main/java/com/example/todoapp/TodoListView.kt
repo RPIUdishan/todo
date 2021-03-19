@@ -1,5 +1,6 @@
 package com.example.todoapp
 
+import android.app.AlertDialog
 import android.content.Context
 import android.content.Intent
 import android.content.Intent.getIntent
@@ -54,6 +55,14 @@ class TodoListView : AppCompatActivity() {
                 db.deleteActivity(data.get(position).id)
             }
 
+            var btnUpdate = row.findViewById<Button>(R.id.btn_updt)
+            btnUpdate.setOnClickListener(){
+                val dialogBuilder = AlertDialog.Builder(mContext)
+                dialogBuilder.setTitle("Test Title")
+                dialogBuilder.setMessage("Test Message")
+                dialogBuilder.show()
+
+            }
             return row
 
         }
