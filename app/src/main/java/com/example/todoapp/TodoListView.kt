@@ -9,6 +9,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.inflate
 import android.view.ViewGroup
 import android.widget.*
 import androidx.core.content.ContextCompat
@@ -57,11 +58,23 @@ class TodoListView : AppCompatActivity() {
 
             var btnUpdate = row.findViewById<Button>(R.id.btn_updt)
             btnUpdate.setOnClickListener(){
-                val dialogBuilder = AlertDialog.Builder(mContext)
-                dialogBuilder.setTitle("Test Title")
-                dialogBuilder.setMessage("Test Message")
-                dialogBuilder.show()
 
+                val editBox = layoutInflater.inflate(R.layout.alert_layout, viewGroup, false)
+
+                val dialogBoxBuilder = AlertDialog.Builder(mContext).setView(editBox)
+                Log.d("Test", "Dialog Builder")
+                val show = dialogBoxBuilder.show()
+
+                var btnCancel = editBox.findViewById<Button>(R.id.btn_cancel)
+
+                btnCancel.setOnClickListener(){
+                    show.dismiss()
+                }
+
+                var btnDialogUpdate = editBox.findViewById<Button>(R.id.btn_updateDialog)
+                btnDialogUpdate.setOnClickListener(){
+                    
+                }
             }
             return row
 
